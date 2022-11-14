@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="BankDataContext">
+  <DataContextMoniker Name="/BankDataContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="79fecbe5-ee3b-4983-ba71-599ef135d409" absoluteBounds="4.125, 1.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BankDataContextDataContext/Account" />
+      <nestedChildShapes>
+        <elementListCompartment Id="06b1ed81-6109-4094-b156-308b582eaea1" absoluteBounds="4.14, 2.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a657eb05-f498-4d41-b48d-01ff5640c1e6" absoluteBounds="8, 3.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/BankDataContextDataContext/Client" />
+      <nestedChildShapes>
+        <elementListCompartment Id="031cdb0f-7423-4498-804d-b28966ac681a" absoluteBounds="8.015, 3.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8 : 3.86620198567708); (6.125 : 3.86620198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BankDataContextDataContext/Client/Client_Account" />
+      <nodes>
+        <classShapeMoniker Id="a657eb05-f498-4d41-b48d-01ff5640c1e6" />
+        <classShapeMoniker Id="79fecbe5-ee3b-4983-ba71-599ef135d409" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

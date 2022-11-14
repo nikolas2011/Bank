@@ -1,0 +1,119 @@
+﻿<Window x:Class="Bank.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bank"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="677.744" Width="793.598">
+    <Window.Resources>
+        <DataTemplate x:Key="ShowType">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{Binding CustomerType}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ShowCreditLimit">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding LastName}"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding DepositeAmount}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ShowCustomer">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding LastName}"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding CountryName}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="119">
+            <MenuItem Header="Change information" Height="25" Width="119">
+                <MenuItem x:Name="Adress" Header="Change adress" Click="Adress_Click"/>
+                <MenuItem Name="Status" Header="Change status" Click="Status_Click"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid Name="dataGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="189" Margin="10,61,0,0" VerticalAlignment="Top" Width="457" SelectionChanged="dataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Account number" Binding="{Binding AccountNumber}" Width="*"/>
+                <DataGridTextColumn Header="Currency code" Binding="{Binding CurrencyCode}" Width="*"/>
+                <DataGridTextColumn Header="Deposited amount" Binding="{Binding DepositedAmount}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name: "/>
+                            <TextBlock Text="{Binding Client.Name}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Last Name: "/>
+                            <TextBlock Text="{Binding Client.LastName}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Street Name: "/>
+                            <TextBlock Text="{Binding Client.StreetName}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="House Number: "/>
+                            <TextBlock Text="{Binding Client.HouseNumber}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Postal Code: "/>
+                            <TextBlock Text="{Binding Client.PostalCode}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Date of Birth: "/>
+                            <TextBlock Text="{Binding Client.DateBirth}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Type of Customer: "/>
+                            <TextBlock Text="{Binding Client.CustomerType}"/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+        <GroupBox Header="See who are the VIP customers, grouped by country" HorizontalAlignment="Left" Height="284" Margin="481,61,0,0" VerticalAlignment="Top" Width="294">
+            <Grid Margin="0,0,0,9">
+                <ListBox x:Name="lbShowClients" ItemTemplate="{StaticResource ShowCustomer}"  HorizontalAlignment="Left" Height="204" Margin="10,46,0,0" VerticalAlignment="Top" Width="222" />
+            </Grid>
+        </GroupBox>
+        <Button Click="btnVIP_Click" Content="VIP Customers" HorizontalAlignment="Left" Margin="527,91,0,0" VerticalAlignment="Top" Width="93"/>
+        <GroupBox Header="Transactions" HorizontalAlignment="Left" Height="251" Margin="10,298,0,0" VerticalAlignment="Top" Width="457">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="396*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="tbFrom" HorizontalAlignment="Left" Height="23" Margin="43,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" Grid.Column="2"/>
+                <TextBox x:Name="tbTo" HorizontalAlignment="Left" Height="23" Margin="43,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" Grid.Column="2"/>
+                <Label Content="From: " HorizontalAlignment="Left" Margin="8.049,7,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
+                <Label Content="To:" HorizontalAlignment="Left" Margin="8.049,50,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Button x:Name="btnSend" Content="Send" Grid.Column="2" HorizontalAlignment="Left" Margin="97,170,0,0" VerticalAlignment="Top" Width="75" Click="btnSend_Click"/>
+                <Label Content="Amount:" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="tbAmount" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="43,123,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="97"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="" HorizontalAlignment="Left" Height="277" Margin="481,360,0,0" VerticalAlignment="Top" Width="294">
+            <Grid>
+                <ListBox x:Name="lbcard" ItemTemplate="{StaticResource ShowCreditLimit}" HorizontalAlignment="Left" Height="160" Margin="10,10,0,0" VerticalAlignment="Top" Width="262"/>
+                <Button Click="btnShow_Click" x:Name="btnShow" Content="Show" HorizontalAlignment="Left" Margin="100,183,0,0" VerticalAlignment="Top" Width="75"/>
+                <Label Content="Show customers that are about " HorizontalAlignment="Left" Margin="43,203,0,0" VerticalAlignment="Top" Width="195"/>
+                <Label Content="to reach the credit card limit" HorizontalAlignment="Left" Margin="43,216,0,0" VerticalAlignment="Top" Width="216"/>
+
+            </Grid>
+        </GroupBox>
+
+
+    </Grid>
+</Window>

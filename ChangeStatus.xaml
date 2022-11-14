@@ -1,0 +1,38 @@
+﻿<Window x:Class="Bank.ChangeStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bank"
+        mc:Ignorable="d"
+        Title="ChangeStatus" Height="355.682" Width="778.408">
+    <Window.Resources>
+        <DataTemplate x:Key="Name">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding LastName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Type">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding LastName}"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding CustomerType}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Margin="0,0,-8,-21">
+        <ComboBox Name="cmbName" ItemTemplate="{StaticResource Name}" HorizontalAlignment="Left" Margin="155,56,0,0" VerticalAlignment="Top" Width="156" SelectionChanged="cmbName_SelectionChanged"/>
+        <ListBox x:Name="lbName" ItemTemplate="{StaticResource Type}" HorizontalAlignment="Left" Height="211" Margin="422,52,0,0" VerticalAlignment="Top" Width="300"/>
+        <TextBox x:Name="tbType" HorizontalAlignment="Left" Height="24" Margin="155,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" />
+        <Label Content="Select customer:" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
+        <Label Content="New customer status" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="212,229,0,0" VerticalAlignment="Top" Width="99" Click="btnSave_Click" Height="34"/>
+        <Label Content="*(Type -Premium- to change customer status in VIP" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
+        <Label Content="or type -Regular- to change customer status in regular)" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

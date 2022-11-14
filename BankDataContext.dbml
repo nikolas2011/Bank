@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Bank" Class="BankDataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-TMSUCE8\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True" SettingsObjectName="Bank.Properties.Settings" SettingsPropertyName="BankConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="idAccount" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DepositedAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CardLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeOfAccount" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="WithdrawalFee" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="CreditPayment" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idClient" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Client_Account" Member="Client" ThisKey="idClient" OtherKey="idClient" Type="Client" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Client" Member="Clients">
+    <Type Name="Client">
+      <Column Name="idClient" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateBirth" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="StreetName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HouseNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CountryCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ListOfAccounts" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Client_Account" Member="Accounts" ThisKey="idClient" OtherKey="idClient" Type="Account" />
+    </Type>
+  </Table>
+</Database>
